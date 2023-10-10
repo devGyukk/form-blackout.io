@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge" /> -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <section class="container" id="container-left">
+        <header>Blackout Form</header>
+        <form action="#" class="form" id="blackout-form">
+            <div class="cpu-type-box">
+                <h3>CPU Type</h3>
+                <div class="cpu-type-option" id="div-cpu-type">
+                    <div class="cpu-type">
+                        <input type="radio" id="fta" name="cpu-type" />
+                        <label for="fta">FTA</label>
+                    </div>
+                    <div class="cpu-type">
+                        <input type="radio" id="xag" name="cpu-type" />
+                        <label for="xag">XAG</label>
+                    </div>
+                </div>
+                <div id="message-cpu-type"></div>
+            </div>
+            <div class="input-box">
+                <label>CCX</label>
+                <input type="text" id="ccx" placeholder="Enter your CCX" maxlength="3" required />
+                <div id="message-ccx"></div>
+            </div>
+
+            <div class="input-box" id="div-cpu">
+                <label>CPU</label>
+                <input type="text" id="cpu" placeholder="" required />
+                <div id="message-cpu""></div>
+            </div>
+
+            <div class="input-box">
+                <label>SCHED</label>
+                <input type="text" id="sched" placeholder="Enter your Schedule name (with folder)"/>
+                <div id="message-sched"></div>
+            </div>
+
+            <div class="input-box">
+                <label>JOB</label>
+                <input type="text" id="job" placeholder="Enter your Job name (without folder)" required />
+                <div id="message-job"></div>
+            </div>
+
+            <div class="input-box" id="div-end-date">
+                <label>End Date</label>
+                <input type="date" id="end-date" placeholder="Enter end date" required />
+                <div id="message-end-date"></div>
+            </div>
+
+            <div class="input-box">
+                <label>COMMENT</label>
+                <input type="text" id="comment" placeholder="Enter your comment (100 caracters max)" required />
+                <div id="message-comment"></div>
+            </div>
+
+            <button id="add">Add</button>
+            <button id="copy">Copy</button>
+            <button id="download">Download</button>
+            <button id="reset">Reset</button>
+        </form>
+    </section>
+
+    <section class="container container-larger" id="container-right">
+        <header>Blackout Result</header>
+        <div class="result" id="result">
+            <!-- <div class="data" id="line-1"><img src="img/del.png" alt="del" class="line-1"><div class="text-line-1 text-line" id="text-line-1">/APPLIS/CCC/CCC#/APPLIS/CCC/CCC.CCC;;ccc</div></div> -->
+        </div>
+        <div class="message-success" id="copy-success">La copie a été effectuée avec succes !</div>
+    </section>
+
+    <section id="section-to-copy">
+        <div id="to-copy">
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
