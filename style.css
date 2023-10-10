@@ -193,9 +193,18 @@ input.error{
   clear: none;
 }
 
-.message-success {
+.message-copy-success {
   background-color: #74ff92;
   color: #0d6320;
+  border-radius: 5px;
+  margin-top: 10px;
+  text-align: center;
+  display: none;
+}
+
+.message-copy-error {
+  background-color: #ff7474;
+  color: #630d0d;
   border-radius: 5px;
   margin-top: 10px;
   text-align: center;

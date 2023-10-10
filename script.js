@@ -30,7 +30,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const div_cpu = document.getElementById("div-cpu");
     const div_cpu_type = document.getElementById("div-cpu-type");
     const div_copy = document.getElementById("to-copy");
-    const div_copy_success = document.getElementById("copy-success");
+    const div_message_copy = document.getElementById("message-copy");
 
     // date et heures
     const today = new Date();
@@ -223,13 +223,24 @@ document.addEventListener("DOMContentLoaded", function() {
     button_copy.addEventListener("click", function(event) {
         event.preventDefault();
 
+        var numberOfChildren = div_result.getElementsByTagName('*').length
+        if (numberOfChildren == 0)  {
+            // div_message_copy.classList.add("error");
+            div_message_copy.classList.add("message-copy-error");
+            div_message_copy.classList.remove("message-copy-success");
+            div_message_copy.innerHTML = "Impossible de copier un contenu vide !";
+            div_message_copy.style.display = "block";
+            setTimeout(function(){  div_message_copy.style.display = "none"; }, 3000);
+            return 1;
+        }
+
         div_copy.innerHTML = '';
 
         var filtered = list_blackout.filter(function (el) {
             return el != "";
-          });
+        });
         
-          filtered.forEach((element) => div_copy.innerHTML += element + "<br />");
+        filtered.forEach((element) => div_copy.innerHTML += element + "<br />");
         // console.log(filtered)
 
         copyDivToClipboard();
@@ -245,6 +256,16 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         
         filtered.forEach((element) => div_copy.innerHTML += element + "<br />");
+
+        var numberOfChildren = div_result.getElementsByTagName('*').length
+        if (numberOfChildren == 0)  {
+            div_message_copy.classList.add("message-copy-error");
+            div_message_copy.classList.remove("message-copy-success");
+            div_message_copy.innerHTML = "Impossible de telcharger un contenu vide !";
+            div_message_copy.style.display = "block";
+            setTimeout(function(){  div_message_copy.style.display = "none"; }, 3000);
+            return 1;
+        }
 
         if (list_blackout.length >= 1){
             var download = document.createElement('a');
@@ -326,8 +347,11 @@ document.addEventListener("DOMContentLoaded", function() {
         // document.getElementById("SuccessCopy").setAttribute("style", "display:block");
         div_copy.style.display = "none";
 
-        div_copy_success.style.display = "block";
-        setTimeout(function(){  div_copy_success.style.display = "none"; }, 3000);
+        div_message_copy.classList.remove("message-copy-error");
+        div_message_copy.classList.add("message-copy-success");
+        div_message_copy.innerHTML = "La copie a été effectuée avec succes !";
+        div_message_copy.style.display = "block";
+        setTimeout(function(){  div_message_copy.style.display = "none"; }, 3000);
     };
 
 });
